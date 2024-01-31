@@ -19,3 +19,12 @@ export const createComment  = async (req, res, next) => {
         next(error);
     }
 }
+export const getPostComments = async (req, res, next) => {
+    try {
+        const { postId } = req.params;
+        const comments = await Comment.find({ postId });
+        res.status(200).json(comments);
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+  };
