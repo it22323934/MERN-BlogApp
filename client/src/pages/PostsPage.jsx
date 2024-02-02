@@ -38,14 +38,14 @@ export default function PostsPage() {
 
   useEffect(() => {
     try {
-      const fetchRecentPots = async () => {
+      const fetchRecentPosts = async () => {
         const res = await fetch("/api/post/getposts?limit=3");
         const data = await res.json();
         if (res.ok) {
           setRecentPosts(data.posts);
         }
       };
-      fetchRecentPots();
+      fetchRecentPosts();
     } catch (error) {
       console.log(error);
     }
